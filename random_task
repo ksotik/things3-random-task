@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import random
+import sys
+from things3.things3 import Things3
+
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+things3 = Things3()
+
+title = ''
+if len(sys.argv) > 1 and (sys.argv[1] == 'a' or sys.argv[1] == '-a'):
+    tasks = things3.get_anytime()
+    title = 'anytime'
+elif len(sys.argv) > 1 and (sys.argv[1] == 't' or sys.argv[1] == '-t'):
+    tasks = things3.get_today()
+    title = 'today'
+else:
+    tasks = things3.get_inbox()
+    title = 'inbox'
+
+task = random.choice(tasks)
+print('')
+print(f'{bcolors.HEADER}Bro, just do this task from {bcolors.UNDERLINE}%s{bcolors.ENDC}{bcolors.HEADER}:{bcolors.ENDC}' % title)
+print('')
+print(f'{bcolors.BOLD}[ ] %s [%s]{bcolors.ENDC}' % (task['title'], ('things:///show?id=%s' % task['uuid'])))
+print('')
