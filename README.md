@@ -23,6 +23,7 @@ $ chmod +x /usr/local/bin/random_task
 ```
 $ random_task
 ```
+![Example](random_task_inbox.png)
 
 Выбор случайной задачи из списка "Сегодня":
 ```
